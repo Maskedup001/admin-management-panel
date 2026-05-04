@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  font-size: 17px;
+}
+
+th {
+  background-color: var(--block-background);
+}
+
+td {
+  background-color: var(--block-child-background);
+  text-align: center;
+}
+
+tbody tr:hover td {
+  background-color: rgba(61, 83, 209, 0.767) !important;
+  cursor: pointer;
+  color: whitesmoke;
+}

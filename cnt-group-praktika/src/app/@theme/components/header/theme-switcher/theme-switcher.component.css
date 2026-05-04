@@ -1,0 +1,66 @@
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+/* Общие стили для обеих кнопок */
+.theme-switcher__button,
+.blue-theme-button {
+  padding: 3px 5px;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  color: var(--text-color);
+  outline: none;
+  border: 1px solid var(--block-child-border-color);
+  background-color: var(--block-child-background);
+}
+
+.theme-switcher__button:focus-visible,
+.blue-theme-button:focus-visible {
+  outline: none;
+  border: 1px solid var(--focus-color);
+}
+
+.theme-switcher__button>svg,
+.blue-theme-button>svg {
+  transition: .3s;
+}
+
+.theme-switcher__button:hover svg,
+.blue-theme-button:hover svg {
+  transform: scale(1.1);
+}
+
+/* Разные анимации для кнопок */
+.theme-switcher__button {
+  animation: shadow-scale 3s infinite;
+}
+
+.blue-theme-button {
+  animation: blue-shadow-scale 3s infinite;
+}
+
+@keyframes shadow-scale {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.20);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(247, 244, 214, 0.30);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.20);
+  }
+}
+
+@keyframes blue-shadow-scale {
+  0% {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.20);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.40);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.20);
+  }
+}

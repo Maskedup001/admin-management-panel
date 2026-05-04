@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* Используем 100vh для полной высоты окна */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;  /* чтобы убрать прокрутку */
+  
+  position: absolute; 
+  top: 0px;
+ 	left: 0px;
+}
+
+.layout {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+  min-height: 0;  /* Предотвращает переполнение */
+}
+
+main {
+  position: relative;
+  flex: 1;
+  padding: 20px;
+  /* background-color: #f5f5f5; */
+  overflow: hidden;  /* Убираем возможное переполнение */
+}
+
+/* .lorev-container {
+	width: 100%;
+	padding: 5px;
+	margin: 0;
+} */
+ 
+ button {
+  padding: 8px;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  background-color: var(--color-indigo-500);
+  color: rgb(233, 233, 233);
+  font-size: 15px;
+  cursor: pointer;
+}

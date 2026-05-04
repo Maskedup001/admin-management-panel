@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let header of columnHeaders">{{ header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr 
+      *ngFor="let row of data; let i = index" 
+      (click)="onRowClick(row)"
+      [style.background]="getRowColor(row.userId)"
+    >
+      <td 
+        *ngFor="let header of dataKeys" 
+        [ngStyle]="{
+          'background': getCellColor(row.userId, header) || 
+            (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')
+        }"
+      >
+        {{ row[header] }}
+      </td>
+    </tr>
+  </tbody>
+</table>

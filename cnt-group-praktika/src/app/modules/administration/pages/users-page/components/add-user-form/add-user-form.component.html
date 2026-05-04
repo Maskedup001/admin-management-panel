@@ -1,0 +1,58 @@
+<header>Добавить пользователя</header>
+<main>
+	<form [formGroup]='addUserForm' (ngSubmit)='addNewUser()'>
+		<div class="field-container">
+			<input type='text' placeholder='Логин' formControlName='userLogin'
+				[ngClass]="{ invalid: getFieldErrors('userLogin') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('userLogin')">
+				<small *ngIf="getFieldErrors('userLogin')?.['required']">Обязательное поле</small>
+				<small *ngIf="getFieldErrors('userLogin')?.['minlength']">Минимум 2 символа</small>
+			</div>
+		</div>
+		<div>
+			<input type='text' placeholder='Пароль' formControlName='userPassword'
+				[ngClass]="{ invalid: getFieldErrors('userPassword') }" />
+			<div *ngIf="getFieldErrors('userPassword')">
+				<small>Пароль минимум 4 символа, должен содержать !@#$%^&*</small>
+			</div>
+		</div>
+		<div class="field-container">
+			<input type='text' placeholder='Имя' formControlName='userFirstName'
+				[ngClass]="{ invalid: getFieldErrors('userFirstName') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('userFirstName')">
+				<small *ngIf="getFieldErrors('userFirstName')?.['required']">Обязательное поле</small>
+				<small
+					*ngIf="getFieldErrors('userFirstName')?.['minlength'] || getFieldErrors('userFirstName')?.['pattern']">Только
+					буквы, от 2 символов</small>
+			</div>
+		</div>
+		<div class="field-container">
+			<input type='text' placeholder='Фамилия' formControlName='userLastName'
+				[ngClass]="{ invalid: getFieldErrors('userLastName') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('userLastName')">
+				<small *ngIf="getFieldErrors('userLastName')?.['required']">Обязательное поле</small>
+				<small
+					*ngIf="getFieldErrors('userLastName')?.['minlength'] || getFieldErrors('userLastName')?.['pattern']">Только
+					буквы, от 2 символов</small>
+			</div>
+		</div>
+		<div class="field-container">
+			<input type='text' placeholder='Отчество' formControlName='userPatronymic'
+				[ngClass]="{ invalid: getFieldErrors('userPatronymic') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('userPatronymic')">
+				<small *ngIf="getFieldErrors('userPatronymic')?.['required']">Обязательное поле</small>
+				<small
+					*ngIf="getFieldErrors('userPatronymic')?.['minlength'] || getFieldErrors('userPatronymic')?.['pattern']">Только
+					буквы, от 2 символов</small>
+			</div>
+		</div>
+		<div class="field-container">
+			<input type='date' placeholder='Дата рождения' formControlName='userBirthday'
+				[ngClass]="{ invalid: getFieldErrors('userBirthday') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('userBirthday')">
+				<small *ngIf="getFieldErrors('userBirthday')?.['required']">Обязательное поле</small>
+			</div>
+		</div>
+		<button type='submit' [disabled]='addUserForm.invalid'>Добавить</button>
+	</form>
+</main>
