@@ -16,10 +16,9 @@ export class MenuChildrensComponent implements OnInit {
   constructor(public menuService: MenuService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    if (this.parentItem) { // если получили parentItem через @Input() (нужно для вложенности)
+    if (this.parentItem) {
       this.menuChildrenItems = this.menuService.getChildrenItems(this.parentItem);
     } else {
-        // нужно, чтобы перерисовывать элементы в сайд баре.
       this.menuService.currentItem$.subscribe(currentItem => {
         if (currentItem) {
           this.menuChildrenItems = this.menuService.getChildrenItems(currentItem);
@@ -28,18 +27,12 @@ export class MenuChildrensComponent implements OnInit {
     }
   }
 
-  toggleSubMenu(item: MenuItem) {
+  toggleSubMenu(event: Event, item: MenuItem) {
+    event.preventDefault();
+    event.stopPropagation(); // Критически важно!
     item.showSubMenu = !item.showSubMenu;
-
-    // заполняет ключ (массив) subMenuItems у объекта
-    if (item.showSubMenu) {
-      item.subMenuItems = this.menuService.getChildrenItems(item);
-    } else {
-      item.subMenuItems = null;
-    }
   }
 
-  // корректирует вставку иконки
   getSafeHtml(icon: string | null): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(icon || '');
   }

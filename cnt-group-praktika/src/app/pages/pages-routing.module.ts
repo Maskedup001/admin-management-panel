@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './sections/main-page/main-page.component';
 import { PagesComponent } from './pages.component';
 
-
-
 const routes: Routes = [
   {
     path: '',
@@ -14,9 +12,17 @@ const routes: Routes = [
         path: 'mainPage',
         component: MainPageComponent,
       },
-			{
+      {
+        path: 'dashboard',
+        component: MainPageComponent,
+      },
+      {
+        path: 'statistics',
+        component: MainPageComponent,
+      },
+      {
         path: 'administration',
-         loadChildren: () => import('../modules/administration/administration.module').then(module => module.AdministrationModule)
+        loadChildren: () => import('../modules/administration/administration.module').then(module => module.AdministrationModule)
       },
       {
         path: '',
@@ -28,9 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class PagesRoutingModule { }

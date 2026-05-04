@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TableComponent } from 'src/app/@theme/components/ui/table/table.component';
+import { TableComponent } from '../../@theme/components/ui/table/table.component';
 
 @NgModule({
   declarations: [TableComponent],

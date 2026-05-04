@@ -1,7 +1,7 @@
 import { UserService } from '../../../../../../domains/users/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserRegister } from 'src/app/domains/users/models/user.model';
+import { UserRegister } from '../../../../../../domains/users/models/user.model';
 import { DatePipe } from '@angular/common';
 
 @Component({

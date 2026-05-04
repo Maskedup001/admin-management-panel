@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserRegister } from 'src/app/domains/users/models/user.model';
-import { UserService } from 'src/app/domains/users/services/user.service';
+import { UserRegister } from '../../../../domains/users/models/user.model';
+import { UserService } from '../../../../domains/users/services/user.service';
 
 @Component({
   selector: 'app-users-page',

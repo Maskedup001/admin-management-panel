@@ -5,28 +5,39 @@
       *ngFor="let subItem of menuChildrenItems"
       [ngClass]="{ 'submenu__item--show-children': subItem.showSubMenu }"
       tabindex="0"
-      [routerLink]="subItem.itemLink"
     >
-      <span class="submenu__wrapper">
-        <span
-          class="submenu__icon"
-          [innerHTML]="getSafeHtml(subItem.icon)"
-        ></span>
-        <span
-          class="submenu__text"
-          [ngClass]="sidebarHidden ? 'submenu__text--hidden' : ''"
+      <div class="submenu__wrapper">
+        <!-- Кликабельная зона для перехода по ссылке -->
+        <div 
+          class="submenu__link-area" 
+          [routerLink]="subItem.itemLink"
+          style="display: flex; align-items: center; flex-grow: 1; cursor: pointer;"
         >
-          {{ subItem.itemName }}
-        </span>
+          <span
+            class="submenu__icon"
+            [innerHTML]="getSafeHtml(subItem.icon)"
+          ></span>
+          <span
+            class="submenu__text"
+            [ngClass]="sidebarHidden ? 'submenu__text--hidden' : ''"
+          >
+            {{ subItem.itemName }}
+          </span>
+        </div>
+
+        <!-- Отдельная зона для раскрытия подменю (только если есть дети) -->
         <span
           class="submenu__toggle"
           *ngIf="menuService.getChildrenItems(subItem).length > 0 && !sidebarHidden"
-          (click)="toggleSubMenu(subItem)"
+          (click)="toggleSubMenu($event, subItem)"
           [ngClass]="sidebarHidden ? 'submenu__toggle--hidden' : ''"
+          style="cursor: pointer; padding: 0 10px;"
         >
           {{ subItem.showSubMenu ? "-" : "+" }}
         </span>
-      </span>
+      </div>
+
+      <!-- Контейнер для вложенных элементов -->
       <div
         class="submenu__children"
         *ngIf="subItem.showSubMenu && !sidebarHidden"
