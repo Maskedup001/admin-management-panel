@@ -32,7 +32,7 @@ export class MenuService {
     {
       idItem: 3,
       itemName: 'Мониторинг',
-      itemLink: '/dashboard', // Вместо NULL ставим реальный путь
+      itemLink: '/dashboard', 
       iconTypeId: 1,
       icon: null,
       itemOrder: 1,
@@ -54,7 +54,7 @@ export class MenuService {
     {
       idItem: 9,
       itemName: 'Общая',
-      itemLink: '/statistics', // Вместо NULL ставим реальный путь
+      itemLink: '/statistics', 
       iconTypeId: 1,
       icon: '',
       itemOrder: 1,

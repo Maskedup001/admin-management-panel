@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, OnInit } from '@angular/core';
-import { UserService } from 'src/app/domains/users/services/user.service';
+import { UserService } from '../../../../domains/users/services/user.service';
 
 @Component({
   selector: 'app-table',
@@ -26,7 +26,7 @@ export class TableComponent implements OnChanges, OnInit {
   }
 
   loadUserRoles() {
-    this.userService.getAllRoles().subscribe(roles => {
+    this.userService.getAllRoles().subscribe((roles: any) => {
       this.userRoles = roles;
       console.log('Loaded roles:', this.userRoles); // Для отладки
     });
