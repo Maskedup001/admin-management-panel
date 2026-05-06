@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AddUserFormComponent } from './pages/users-page/components/add-user-form/add-user-form.component';
 import { EditUserComponent } from './pages/users-page/components/edit-user/edit-user.component';
+import { AdminsListPageComponent } from './pages/admins-list-page/admins-list-page.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditUserComponent } from './pages/users-page/components/edit-user/edit-
     UsersPageComponent,
     NewsPageComponent,
     AddUserFormComponent,
-    EditUserComponent
+    EditUserComponent,
+    AdminsListPageComponent
   ],  imports: [
     AdministrationRoutingModule,
     CommonModule,

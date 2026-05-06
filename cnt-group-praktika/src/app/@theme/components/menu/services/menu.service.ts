@@ -94,6 +94,17 @@ export class MenuService {
       parentItem: 5, 
       showSubMenu: false,
       subMenuItems: []
+    },
+		{
+      idItem: 11, 
+      itemName: 'Администраторы', 
+      itemLink: '/administration/admins', 
+      iconTypeId: 1,
+      icon: '<svg class="menuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" style="fill: var(--text-color);"><path d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-123.5T720-496v-180l-240-90-240 90v180q0 118 68 208.5T480-164Zm0-332Z"/></svg>',
+      itemOrder: 3, 
+      parentItem: 7, 
+      showSubMenu: false,
+      subMenuItems: []
     }
   ];
 
