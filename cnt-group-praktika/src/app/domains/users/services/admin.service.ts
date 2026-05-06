@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Observable } from 'rxjs'; 
-
-export interface Admin {
-  id?: number;
-  username: string;
-  email: string;
-  password?: string;
-}
+import { Admin } from '../models/admin.model'; 
 
 export interface AdminsResponse {
   ok: boolean;
@@ -32,7 +26,7 @@ export class AdminService {
     return this.http.post<any>(this.apiUrl, data); 
   }
 
-  // 3. PATCH — Обновление администратора (соответствует @router.patch в Python)
+  // 3. PATCH — Обновление администратора
   updateUser(id: number, data: Partial<Admin>): Observable<any> {
     return this.http.patch<any>(`${this.apiUrl}/${id}`, data); 
   }

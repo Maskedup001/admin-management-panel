@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService, Admin } from '../../../../domains/users/services/admin.service'; 
+import { AdminService } from '../../../../domains/users/services/admin.service'; 
+import { Admin } from '../../../../domains/users/models/admin.model'; 
 
 @Component({
   selector: 'app-admin-page',
@@ -28,13 +29,13 @@ export class AdminPageComponent implements OnInit {
     });
   }
 
-  // Метод для кнопки удаления по клику в таблице(если будет)
-  deleteUser(id: number): void {
+  // Метод для кнопки удаления по клику в таблице (используем admin_id из базы)
+  deleteUser(adminId: number): void {
     if (confirm('Удалить пользователя?')) {
-      this.adminService.deleteUser(id).subscribe({
+      this.adminService.deleteUser(adminId).subscribe({
         next: () => {
           console.log('Пользователь успешно удален на сервере');
-          this.loadUsers(); // Перезагружаем список на экране
+          this.loadUsers(); 
         },
         error: (err) => console.error('Ошибка удаления:', err)
       });
