@@ -1,0 +1,69 @@
+.admin-container {
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.table-wrapper {
+  background: var(--block-background);
+  border: 1px solid var(--block-border-color);
+  border-radius: 8px;
+  max-height: calc(100vh - 150px); 
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background-color: var(--block-child-background);
+  padding: 12px 15px;
+  text-align: left;
+  position: sticky; 
+  border-bottom: 2px solid var(--block-border-color);
+  z-index: 1;
+}
+
+.admin-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--block-border-color);
+}
+
+.admin-table tr:hover {
+  background-color: var(--block-child-background-hover);
+}
+
+/* Стили для статусов */
+.status-tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-active {
+  background-color: rgba(40, 167, 69, 0.15);
+  color: #2ecc71;
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.status-inactive {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.no-data-message {
+  padding: 20px;
+  color: var(--text-color);
+}

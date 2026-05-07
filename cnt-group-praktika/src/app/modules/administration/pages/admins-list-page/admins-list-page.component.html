@@ -1,4 +1,35 @@
-<div style="padding: 20px;">
-	<h2>Список администраторов</h2>
-	<p>Компонент admins-list-page работает успешно!</p>
+<div class="admin-container">
+	<h2>Список администраторов системы</h2>
+
+	<div class="table-wrapper">
+		<table class="admin-table" *ngIf="admins && admins.length > 0; else noData">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Логин</th>
+					<th>Статус</th>
+					<th>Дата создания</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let admin of admins">
+					<td>{{ admin.admin_id }}</td>
+					<td><strong>{{ admin.admin_login }}</strong></td>
+					<td>
+						<span class="status-tag"
+							[ngClass]="(admin.is_active_admin === true || admin.is_active_admin == 1) ? 'status-active' : 'status-inactive'">
+							{{ (admin.is_active_admin === true || admin.is_active_admin == 1) ? 'Активен' : 'Неактивен' }}
+						</span>
+					</td>
+					<td>{{ admin.created_at | date:'dd.MM.yyyy HH:mm' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<ng-template #noData>
+		<div class="no-data-message">
+			Загрузка данных или список пуст...
+		</div>
+	</ng-template>
 </div>
