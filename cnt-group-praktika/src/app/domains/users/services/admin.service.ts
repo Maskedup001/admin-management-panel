@@ -1,3 +1,4 @@
+// admin.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Observable } from 'rxjs'; 
@@ -20,11 +21,11 @@ export class AdminService {
     return this.http.get<AdminsResponse>(this.apiUrl); 
   }
 
-  createAdmin(data: any): Observable<any> {
+  createAdmin(data: Admin): Observable<any> {
     return this.http.post<any>(this.apiUrl, data); 
   }
 
-  updateAdmin(id: number, data: any): Observable<any> {
+  updateAdmin(id: number, data: Partial<Admin>): Observable<any> {
     return this.http.patch<any>(`${this.apiUrl}/${id}`, data); 
   }
 

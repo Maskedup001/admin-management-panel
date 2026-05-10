@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../../../../../../domains/users/services/admin.service';
+import { Admin } from '../../../../../../domains/users/models/admin.model';
 
 @Component({
   selector: 'app-edit-admin',
@@ -8,7 +9,7 @@ import { AdminService } from '../../../../../../domains/users/services/admin.ser
   styleUrls: ['./edit-admin.component.css']
 })
 export class EditAdminComponent implements OnChanges {
-  @Input() selectedAdmin: any | null = null;
+  @Input() selectedAdmin: Admin | null = null; 
   @Output() adminUpdate = new EventEmitter<void>();
   @Output() adminDeleted = new EventEmitter<void>();
 
@@ -48,8 +49,8 @@ export class EditAdminComponent implements OnChanges {
   }
 
   onDelete() {
-    const id = this.selectedAdmin?.admin_id;
-    if (id && confirm(`Удалить администратора ${this.selectedAdmin.admin_login}?`)) {
+    const id = this.selectedAdmin?.admin_id; 
+    if (id && confirm(`Удалить администратора ${this.selectedAdmin?.admin_login}?`)) {
       this.adminService.deleteAdmin(id).subscribe({
         next: () => {
           this.adminDeleted.emit();
@@ -63,7 +64,8 @@ export class EditAdminComponent implements OnChanges {
   onSubmit() {
     const id = this.selectedAdmin?.admin_id;
     if (id && this.editAdminForm.valid) {
-      const payload = {
+      // Формируем payload на основе модели
+      const payload: Partial<Admin> = {
         ...this.editAdminForm.value,
         is_active_admin: this.editAdminForm.value.is_active_admin ? 1 : 0
       };
