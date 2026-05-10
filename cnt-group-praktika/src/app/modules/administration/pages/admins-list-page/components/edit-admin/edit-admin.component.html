@@ -1,0 +1,30 @@
+<header>Редактировать администратора</header>
+<main>
+	<form [formGroup]="editAdminForm" (ngSubmit)="onSubmit()">
+		<div class="admin-field">
+			<label>Логин</label>
+			<input type="text" formControlName="admin_login" [ngClass]="{ invalid: getFieldErrors('admin_login') }" />
+			<div class="error-messages" *ngIf="getFieldErrors('admin_login')">
+				<small>Минимум 2 символа</small>
+			</div>
+		</div>
+
+		<div class="admin-field">
+			<label>Дата рождения</label>
+			<input type="date" formControlName="admin_birth_date"
+				[ngClass]="{ invalid: getFieldErrors('admin_birth_date') }" />
+		</div>
+
+		<div class="admin-field">
+			<label class="admin-checkbox">
+				<input type="checkbox" formControlName="is_active_admin" />
+				Статус: Активен
+			</label>
+		</div>
+
+		<div class="form-actions">
+			<button type="submit" [disabled]="editAdminForm.invalid">Сохранить изменения</button>
+			<button type="button" class="btn-delete" (click)="onDelete()">Удалить администратора</button>
+		</div>
+	</form>
+</main>

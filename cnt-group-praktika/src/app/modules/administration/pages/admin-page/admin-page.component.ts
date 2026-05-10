@@ -18,7 +18,7 @@ export class AdminPageComponent implements OnInit {
 
   // Вызываем метод GET из сервиса и подписываемся на поток данных
   loadUsers(): void {
-    this.adminService.getUsers().subscribe({
+    this.adminService.getAdmins().subscribe({
       next: (data) => {
         this.users = data.admins; 
         console.log('Данные для админки успешно загружены!', data);
@@ -32,7 +32,7 @@ export class AdminPageComponent implements OnInit {
   // Метод для кнопки удаления по клику в таблице (используем admin_id из базы)
   deleteUser(adminId: number): void {
     if (confirm('Удалить пользователя?')) {
-      this.adminService.deleteUser(adminId).subscribe({
+      this.adminService.deleteAdmin(adminId).subscribe({
         next: () => {
           console.log('Пользователь успешно удален на сервере');
           this.loadUsers(); 

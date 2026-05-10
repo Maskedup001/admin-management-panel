@@ -16,23 +16,19 @@ export class AdminService {
 
   constructor(private http: HttpClient) {} 
 
-  // 1. GET — Получить список всех пользователей
-  getUsers(): Observable<AdminsResponse> {
+  getAdmins(): Observable<AdminsResponse> {
     return this.http.get<AdminsResponse>(this.apiUrl); 
   }
 
-  // 2. POST — Создать нового пользователя
-  createUser(data: Admin): Observable<any> {
+  createAdmin(data: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, data); 
   }
 
-  // 3. PATCH — Обновление администратора
-  updateUser(id: number, data: Partial<Admin>): Observable<any> {
+  updateAdmin(id: number, data: any): Observable<any> {
     return this.http.patch<any>(`${this.apiUrl}/${id}`, data); 
   }
 
-  // 4. DELETE — Удалить пользователя по ID
-  deleteUser(id: number): Observable<any> {
+  deleteAdmin(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`); 
   }
 }

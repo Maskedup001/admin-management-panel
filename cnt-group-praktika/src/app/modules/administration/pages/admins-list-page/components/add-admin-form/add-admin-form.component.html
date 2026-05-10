@@ -1,0 +1,29 @@
+<header>Добавить администратора</header>
+<main>
+	<form [formGroup]="addAdminForm" (ngSubmit)="addNewAdmin()">
+		<div class="admin-field">
+			<input type="text" placeholder="Логин" formControlName="admin_login"
+				[ngClass]="{ invalid: getFieldErrors('admin_login') }" />
+		</div>
+
+		<div class="admin-field">
+			<input type="password" placeholder="Пароль" formControlName="admin_password"
+				[ngClass]="{ invalid: getFieldErrors('admin_password') }" />
+		</div>
+
+		<div class="admin-field">
+			<label class="admin-checkbox">
+				<input type="checkbox" formControlName="is_active_admin" />
+				Активен
+			</label>
+		</div>
+
+		<div class="admin-field">
+			<label>Дата рождения</label>
+			<input type="date" formControlName="admin_birth_date"
+				[ngClass]="{ invalid: getFieldErrors('admin_birth_date') }" />
+		</div>
+
+		<button type="submit" [disabled]="addAdminForm.invalid">Создать</button>
+	</form>
+</main>

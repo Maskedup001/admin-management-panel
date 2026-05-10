@@ -10,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { AddUserFormComponent } from './pages/users-page/components/add-user-form/add-user-form.component';
 import { EditUserComponent } from './pages/users-page/components/edit-user/edit-user.component';
 import { AdminsListPageComponent } from './pages/admins-list-page/admins-list-page.component';
+import { EditAdminComponent } from './pages/admins-list-page/components/edit-admin/edit-admin.component';
+import { AddAdminFormComponent } from './pages/admins-list-page/components/add-admin-form/add-admin-form.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { AdminsListPageComponent } from './pages/admins-list-page/admins-list-pa
     NewsPageComponent,
     AddUserFormComponent,
     EditUserComponent,
-    AdminsListPageComponent
+    AdminsListPageComponent,
+    EditAdminComponent,
+    AddAdminFormComponent
   ],  imports: [
     AdministrationRoutingModule,
     CommonModule,

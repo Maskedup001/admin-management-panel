@@ -1,35 +1,52 @@
-<div class="admin-container">
-	<h2>Список администраторов системы</h2>
+<div class="users-page__header">
+	<p>Администраторы</p>
+	<button (click)="onAddBtnClick()">Добавить администратора</button>
+</div>
 
-	<div class="table-wrapper">
+<div class="users-page__content">
+	<div class="users-page__table-wrapper">
 		<table class="admin-table" *ngIf="admins && admins.length > 0; else noData">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Логин</th>
+					<th>Дата рождения</th>
 					<th>Статус</th>
 					<th>Дата создания</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let admin of admins">
-					<td>{{ admin.admin_id }}</td>
-					<td><strong>{{ admin.admin_login }}</strong></td>
-					<td>
-						<span class="status-tag"
-							[ngClass]="(admin.is_active_admin === true || admin.is_active_admin == 1) ? 'status-active' : 'status-inactive'">
-							{{ (admin.is_active_admin === true || admin.is_active_admin == 1) ? 'Активен' : 'Неактивен' }}
-						</span>
+				<tr *ngFor="let admin of admins; let i = index" (click)="onAdminSelect(admin)"
+					[class.selected]="selectedAdmin?.admin_id === admin.admin_id">
+					<td [style.backgroundColor]="selectedAdmin?.admin_id === admin.admin_id ? '' : (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')">
+						{{ admin.admin_id }}
 					</td>
-					<td>{{ admin.created_at | date:'dd.MM.yyyy HH:mm' }}</td>
+					<td [style.backgroundColor]="selectedAdmin?.admin_id === admin.admin_id ? '' : (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')">
+						{{ admin.admin_login }}
+					</td>
+					<td [style.backgroundColor]="selectedAdmin?.admin_id === admin.admin_id ? '' : (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')">
+						{{ admin.admin_birth_date | date:'dd.MM.yyyy' }}
+					</td>
+					<td [style.backgroundColor]="selectedAdmin?.admin_id === admin.admin_id ? '' : (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')">
+						{{ admin.is_active_admin ? 'Активен' : 'Неактивен' }}
+					</td>
+					<td [style.backgroundColor]="selectedAdmin?.admin_id === admin.admin_id ? '' : (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')">
+						{{ admin.created_at | date:'dd.MM.yyyy HH:mm' }}
+					</td>
 				</tr>
 			</tbody>
 		</table>
+		<ng-template #noData><p style="padding: 20px; color: var(--text-color);">Загрузка или данных нет...</p></ng-template>
 	</div>
 
-	<ng-template #noData>
-		<div class="no-data-message">
-			Загрузка данных или список пуст...
-		</div>
-	</ng-template>
+	<aside class="users-page__aside">
+    <app-add-admin-form *ngIf="asideIndex == 1" (adminCreated)="loadAdmins()"></app-add-admin-form>
+    
+    <app-edit-admin 
+      *ngIf="asideIndex == 2" 
+      [selectedAdmin]="selectedAdmin" 
+      (adminUpdate)="loadAdmins()"
+      (adminDeleted)="onAdminDeleted()">
+    </app-edit-admin>
+	</aside>
 </div>
