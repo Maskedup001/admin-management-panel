@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService, AdminsResponse } from '../../../../domains/users/services/admin.service';
-import { Admin } from '../../../../domains/users/models/admin.model'; 
+import { AdminService } from '../../../../domains/users/services/admin.service';
+import { Admin } from '../../../../domains/users/models/admin.model';
 
 @Component({
   selector: 'app-admins-list-page',
@@ -8,8 +8,8 @@ import { Admin } from '../../../../domains/users/models/admin.model';
   styleUrls: ['./admins-list-page.component.css']
 })
 export class AdminsListPageComponent implements OnInit {
-  asideIndex: number = 1;
-  admins: Admin[] = []; 
+  asideIndex: number = 1; 
+  admins: Admin[] = []; // Типизированный массив
   selectedAdmin: Admin | null = null; 
 
   constructor(private adminService: AdminService) { }
@@ -20,18 +20,15 @@ export class AdminsListPageComponent implements OnInit {
 
   loadAdmins(): void {
     this.adminService.getAdmins().subscribe({
-      next: (res: AdminsResponse) => {
-        
-        this.admins = res.admins.map((a: any) => ({
-          ...a,
-          // логика обработки формата Bit/TinyInt из MySQL
-          is_active_admin: a.is_active_admin?.data 
-            ? a.is_active_admin.data[0] === 1 
-            : (a.is_active_admin === 1 || a.is_active_admin === true)
-        }));
-      },
-      error: (err) => {
-        console.error('Ошибка при загрузке списка админов:', err);
+      next: (res) => {
+        if (res && res.admins) {
+          this.admins = res.admins.map((a: any): Admin => ({
+            ...a,
+            is_active_admin: a.is_active_admin?.data 
+              ? a.is_active_admin.data[0] === 1 
+              : (a.is_active_admin === 1 || a.is_active_admin === true)
+          }));
+        }
       }
     });
   }

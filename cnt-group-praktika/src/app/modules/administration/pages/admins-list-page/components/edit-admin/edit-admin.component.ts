@@ -25,8 +25,7 @@ export class EditAdminComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.selectedAdmin) {
-      const status = this.selectedAdmin.is_active_admin;
-      const isActive = status === true || status === 1 || (status?.data && status.data[0] === 1);
+      const isActive = !!this.selectedAdmin.is_active_admin;
 
       let formattedDate = '';
       if (this.selectedAdmin.admin_birth_date) {
@@ -56,7 +55,10 @@ export class EditAdminComponent implements OnChanges {
           this.adminDeleted.emit();
           alert('Удалено успешно');
         },
-        error: () => alert('Ошибка при удалении')
+        error: (err) => {
+          console.error('Ошибка удаления:', err);
+          alert('Ошибка при удалении');
+        }
       });
     }
   }
@@ -64,23 +66,23 @@ export class EditAdminComponent implements OnChanges {
   onSubmit() {
     const id = this.selectedAdmin?.admin_id;
     if (id && this.editAdminForm.valid) {
-      // Формируем payload на основе модели
       const payload: Partial<Admin> = {
-        ...this.editAdminForm.value,
-        is_active_admin: this.editAdminForm.value.is_active_admin ? 1 : 0
+        admin_login: this.editAdminForm.value.admin_login,
+        admin_birth_date: this.editAdminForm.value.admin_birth_date,
+        is_active_admin: this.editAdminForm.value.is_active_admin ? true : false
       };
 
       this.adminService.updateAdmin(id, payload).subscribe({
         next: () => {
-          this.adminUpdate.emit();
+          this.adminUpdate.emit(); // Уведомляем родителя, чтобы он обновил таблицу
           alert('Сохранено успешно');
         },
         error: (err) => {
           console.error('Ошибка PATCH:', err);
           if (err.status === 401) {
-            alert('Ошибка 401: Сессия истекла. Перезайдите в систему (Login).');
+            alert('Сессия истекла. Перезайдите в систему.');
           } else {
-            alert('Ошибка сервера');
+            alert('Ошибка сервера при обновлении');
           }
         }
       });
