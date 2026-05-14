@@ -11,7 +11,6 @@ import { Admin } from '../../../../../../domains/users/models/admin.model';
 export class EditAdminComponent implements OnChanges {
   @Input() selectedAdmin: Admin | null = null; 
   @Output() adminUpdate = new EventEmitter<void>();
-  @Output() adminDeleted = new EventEmitter<void>();
 
   editAdminForm: FormGroup;
 
@@ -47,43 +46,23 @@ export class EditAdminComponent implements OnChanges {
     return this.editAdminForm.get(field)?.errors;
   }
 
-  onDelete() {
-    const id = this.selectedAdmin?.admin_id; 
-    if (id && confirm(`Удалить администратора ${this.selectedAdmin?.admin_login}?`)) {
-      this.adminService.deleteAdmin(id).subscribe({
-        next: () => {
-          this.adminDeleted.emit();
-          alert('Удалено успешно');
-        },
-        error: (err) => {
-          console.error('Ошибка удаления:', err);
-          alert('Ошибка при удалении');
-        }
-      });
-    }
-  }
-
   onSubmit() {
     const id = this.selectedAdmin?.admin_id;
     if (id && this.editAdminForm.valid) {
       const payload: Partial<Admin> = {
         admin_login: this.editAdminForm.value.admin_login,
         admin_birth_date: this.editAdminForm.value.admin_birth_date,
-        is_active_admin: this.editAdminForm.value.is_active_admin ? true : false
+        is_active_admin: this.editAdminForm.value.is_active_admin
       };
 
       this.adminService.updateAdmin(id, payload).subscribe({
         next: () => {
-          this.adminUpdate.emit(); // Уведомляем родителя, чтобы он обновил таблицу
+          this.adminUpdate.emit();
           alert('Сохранено успешно');
         },
         error: (err) => {
           console.error('Ошибка PATCH:', err);
-          if (err.status === 401) {
-            alert('Сессия истекла. Перезайдите в систему.');
-          } else {
-            alert('Ошибка сервера при обновлении');
-          }
+          alert('Ошибка при обновлении');
         }
       });
     }

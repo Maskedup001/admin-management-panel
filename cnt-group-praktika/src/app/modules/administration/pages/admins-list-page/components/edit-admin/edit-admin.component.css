@@ -61,8 +61,4 @@ button {
 
 button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.btn-delete {
-  background-color: #ef4444;
-}
-
 .error-messages { color: #ef4444; font-size: 11px; margin-top: 4px; }

@@ -74,12 +74,40 @@
   cursor: pointer;
 }
 
-.admin-table tbody tr:hover td {
-  background-color: rgba(61, 83, 209, 0.767) !important;
-  color: whitesmoke !important;
+.admin-table tbody tr:nth-child(odd) td {
+  background-color: var(--block-child-background);
 }
 
-.admin-table tr.selected td {
-  background-color: var(--color-indigo-500) !important;
-  color: white !important;
+.admin-table tbody tr:nth-child(even) td {
+  background-color: var(--block-background);
+}
+
+.admin-table tbody tr:hover td {
+  background-color: rgba(61, 83, 209, 0.76);
+  color: whitesmoke;
+}
+
+.admin-table tbody tr.selected td {
+  background-color: var(--color-indigo-500);
+  color: white;
+}
+
+.admin-table tbody tr.selected td {
+  background-color: var(--color-indigo-500);
+  color: white;
+}
+
+.table-delete-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: opacity 0.2s;
+}
+
+.table-delete-btn:hover {
+  opacity: 0.8;
 }

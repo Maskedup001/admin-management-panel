@@ -9,7 +9,7 @@ import { Admin } from '../../../../domains/users/models/admin.model';
 })
 export class AdminsListPageComponent implements OnInit {
   asideIndex: number = 1; 
-  admins: Admin[] = []; // Типизированный массив
+  admins: Admin[] = []; 
   selectedAdmin: Admin | null = null; 
 
   constructor(private adminService: AdminService) { }
@@ -29,8 +29,23 @@ export class AdminsListPageComponent implements OnInit {
               : (a.is_active_admin === 1 || a.is_active_admin === true)
           }));
         }
-      }
+      },
+      error: (err) => console.error('Ошибка загрузки:', err)
     });
+  }
+
+  onDeleteClick(admin: Admin): void {
+    if (confirm(`Вы уверены, что хотите удалить ${admin.admin_login}?`)) {
+      this.adminService.deleteAdmin(admin.admin_id!).subscribe({
+        next: () => {
+          this.onAdminDeleted();
+        },
+        error: (err) => {
+          console.error('Ошибка удаления:', err);
+          alert('Ошибка при удалении');
+        }
+      });
+    }
   }
 
   onAdminSelect(admin: Admin): void {
