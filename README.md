@@ -1,27 +1,48 @@
-# CntGroupPraktika
+# Admin Management System — Frontend (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+> **Professional Practice Project**
+> Современная панель администратора с полным CRUD-циклом, построенная на компонентной архитектуре Angular и интегрированная с REST API.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 🛠 Стек технологий
+* **Core:** Angular 16.2.0
+* **State & Logic:** RxJS, TypeScript Interfaces
+* **Forms:** Angular Reactive Forms (с глубокой валидацией)
+* **API Client:** HttpClient (поддержка CORS и Credentials)
+* **Styling:** SCSS / CSS3
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 🚀 Технические особенности реализации
+* **Reactive Management:** Реализовано управление формами через `FormGroup`, что обеспечивает надежную валидацию данных перед отправкой на сервер.
+* **Component Communication:** Налажено взаимодействие между компонентами через `@Input` и `@Output` (EventEmitter), обеспечивающее мгновенное обновление UI без перезагрузки страницы.
+* **Data Mapping:** Внедрена логика преобразования типов данных (Bit/Boolean) при получении ответов от MySQL для корректного отображения статусов.
+* **Modular Architecture:** Использование `SharedModule` и четкое разделение на сервисы и компоненты.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 📂 Структура проекта
+* `src/app/domains/users/services/` — Сервисы для работы с API.
+* `src/app/pages/` — Основные страницы и модули администрирования.
+* `lesson/` — Полный архив процесса разработки (25 дней практики).
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### ⚙️ Инструкция по установке
+1. Склонируйте репозиторий.
+2. Установите зависимости:
+   
+   ```bash
+   npm install
+   ```
+3. Запустите dev-сервер:
+   
+   ```Bash
+   ng serve
+   ```
+4. Приложение будет доступно по адресу http://localhost:4200/.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Проект разработан в рамках практического обучения. Весь код соответствует стандартам чистого кода (DRY, SOLID в контексте Angular).
