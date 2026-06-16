@@ -52,7 +52,7 @@
 
 1.  **Клонирование репозитория:**
     ```bash
-    git clone [ссылка_на_ваш_репозиторий]
+    git clone https://github.com/Maskedup001/admin-management-panel.git
     ```
 
 2.  **Установка зависимостей:**
