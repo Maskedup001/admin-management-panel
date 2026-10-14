@@ -5,10 +5,11 @@ import { UserRegister } from '../../../../../../domains/users/models/user.model'
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-add-user-form',
-  templateUrl: './add-user-form.component.html',
-  styleUrls: ['./add-user-form.component.css'],
-  providers: [DatePipe]
+    selector: 'app-add-user-form',
+    templateUrl: './add-user-form.component.html',
+    styleUrls: ['./add-user-form.component.css'],
+    providers: [DatePipe],
+    standalone: false
 })
 export class AddUserFormComponent implements OnInit {
   addUserForm: FormGroup = new FormGroup({});

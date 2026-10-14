@@ -3,9 +3,10 @@ import { MenuItem } from '../../models/menu.model';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
-  selector: 'app-menu-parents',
-  templateUrl: './menu-parents.component.html',
-  styleUrls: ['./menu-parents.component.css']
+    selector: 'app-menu-parents',
+    templateUrl: './menu-parents.component.html',
+    styleUrls: ['./menu-parents.component.css'],
+    standalone: false
 })
 export class MenuParentsComponent {
 	menuParentItems: MenuItem[] = this.menuService.getParentItems();

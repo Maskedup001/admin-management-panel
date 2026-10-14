@@ -3,9 +3,10 @@ import { News } from '../../../../@theme/components/menu/models/news.model';
 import { NewsService } from '../../../../@theme/components/menu/services/news.service';
 
 @Component({
-  selector: 'app-news-page',
-  templateUrl: './news-page.component.html',
-  styleUrls: ['./news-page.component.css']
+    selector: 'app-news-page',
+    templateUrl: './news-page.component.html',
+    styleUrls: ['./news-page.component.css'],
+    standalone: false
 })
 export class NewsPageComponent implements OnInit {
   news: News[] = [];

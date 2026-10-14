@@ -3,9 +3,10 @@ import { UserRegister } from '../../../../domains/users/models/user.model';
 import { UserService } from '../../../../domains/users/services/user.service';
 
 @Component({
-  selector: 'app-users-page',
-  templateUrl: './users-page.component.html',
-  styleUrls: ['./users-page.component.css']
+    selector: 'app-users-page',
+    templateUrl: './users-page.component.html',
+    styleUrls: ['./users-page.component.css'],
+    standalone: false
 })
 export class UsersPageComponent {
   // 0 - скрыть | 1 - добавить пользователя | 2 - редактировать пользователя

@@ -4,9 +4,10 @@ import { AdminService } from '../../../../../../domains/users/services/admin.ser
 import { Admin } from '../../../../../../domains/users/models/admin.model';
 
 @Component({
-  selector: 'app-edit-admin',
-  templateUrl: './edit-admin.component.html',
-  styleUrls: ['./edit-admin.component.css']
+    selector: 'app-edit-admin',
+    templateUrl: './edit-admin.component.html',
+    styleUrls: ['./edit-admin.component.css'],
+    standalone: false
 })
 export class EditAdminComponent implements OnChanges {
   @Input() selectedAdmin: Admin | null = null; 

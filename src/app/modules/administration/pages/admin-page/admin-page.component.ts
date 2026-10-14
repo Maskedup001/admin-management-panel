@@ -3,9 +3,10 @@ import { AdminService } from '../../../../domains/users/services/admin.service';
 import { Admin } from '../../../../domains/users/models/admin.model'; 
 
 @Component({
-  selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+    selector: 'app-admin-page',
+    templateUrl: './admin-page.component.html',
+    styleUrls: ['./admin-page.component.css'],
+    standalone: false
 })
 export class AdminPageComponent implements OnInit {
   users: Admin[] = []; // Массив для вывода администраторов в HTML-таблицу
