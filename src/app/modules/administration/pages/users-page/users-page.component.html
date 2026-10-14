@@ -13,11 +13,14 @@
   </div>
 
   <aside class="users-page__aside">
-    <app-add-user-form *ngIf="asideIndex == 1" />
-    <app-edit-user
-      *ngIf="asideIndex == 2"
-      [selectedUser]="selectedUser"
-      (userUpdate)="updateUser($event)">
-    </app-edit-user>
+    @if (asideIndex == 1) {
+      <app-add-user-form />
+    }
+    @if (asideIndex == 2) {
+      <app-edit-user
+        [selectedUser]="selectedUser"
+        (userUpdate)="updateUser($event)">
+      </app-edit-user>
+    }
   </aside>
 </div>

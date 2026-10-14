@@ -1,7 +1,11 @@
 <aside [class.show]="isSidebarVisible">
   <button class="toggle-button" (click)="toggleSidebar()">
-    <span *ngIf="isSidebarVisible">←</span>
-    <span *ngIf="!isSidebarVisible">→</span>
+    @if (isSidebarVisible) {
+      <span>←</span>
+    }
+    @if (!isSidebarVisible) {
+      <span>→</span>
+    }
   </button>
   <app-menu-childrens [sidebarHidden]="!isSidebarVisible"></app-menu-childrens>
 </aside>
