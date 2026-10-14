@@ -3,9 +3,10 @@ import { AdminService } from '../../../../domains/users/services/admin.service';
 import { Admin } from '../../../../domains/users/models/admin.model';
 
 @Component({
-  selector: 'app-admins-list-page',
-  templateUrl: './admins-list-page.component.html',
-  styleUrls: ['./admins-list-page.component.css']
+    selector: 'app-admins-list-page',
+    templateUrl: './admins-list-page.component.html',
+    styleUrls: ['./admins-list-page.component.css'],
+    standalone: false
 })
 export class AdminsListPageComponent implements OnInit {
   asideIndex: number = 1; 

@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../../../../../../domains/users/services/admin.service';
 
 @Component({
-  selector: 'app-add-admin-form',
-  templateUrl: './add-admin-form.component.html',
-  styleUrls: ['./add-admin-form.component.css']
+    selector: 'app-add-admin-form',
+    templateUrl: './add-admin-form.component.html',
+    styleUrls: ['./add-admin-form.component.css'],
+    standalone: false
 })
 export class AddAdminFormComponent implements OnInit {
   @Output() adminCreated = new EventEmitter<void>();

@@ -13,31 +13,22 @@ import { ThemeSwitcherComponent } from './@theme/components/header/theme-switche
 import { MainPageComponent } from './pages/sections/main-page/main-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './modules/shared/shared.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; 
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    PagesComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
-    MenuParentsComponent,
-    MenuChildrensComponent,
-    ThemeSwitcherComponent,
-    MainPageComponent,
-  ],
-
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-		SharedModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
-
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        PagesComponent,
+        HeaderComponent,
+        SidebarComponent,
+        FooterComponent,
+        MenuParentsComponent,
+        MenuChildrensComponent,
+        ThemeSwitcherComponent,
+        MainPageComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        SharedModule,
+        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

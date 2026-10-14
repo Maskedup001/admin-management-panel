@@ -3,9 +3,10 @@ import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "../menu/models/menu.model";
 
 @Component({
-  selector: "app-sidebar",
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.css"]
+    selector: "app-sidebar",
+    templateUrl: "./sidebar.component.html",
+    styleUrls: ["./sidebar.component.css"],
+    standalone: false
 })
 export class SidebarComponent implements OnInit {
   selectedItem: MenuItem | null = null;

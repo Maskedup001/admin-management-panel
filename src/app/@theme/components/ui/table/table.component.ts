@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnChanges, Output, OnInit } from '@angu
 import { UserService } from '../../../../domains/users/services/user.service';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.css'],
+    standalone: false
 })
 export class TableComponent implements OnChanges, OnInit {
   @Input() columnHeaders: string[] = [];

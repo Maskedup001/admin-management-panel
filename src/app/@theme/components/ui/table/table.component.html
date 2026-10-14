@@ -1,21 +1,25 @@
 <table>
   <thead>
     <tr>
-      <th *ngFor="let header of columnHeaders">{{ header }}</th>
+      @for (header of columnHeaders; track header) {
+        <th>{{ header }}</th>
+      }
     </tr>
   </thead>
   <tbody>
-    <tr 
-      *ngFor="let row of data; let i = index" 
-      (click)="onRowClick(row)"
-      [style.backgroundColor]="getRowColor(row.userId)"
-    >
-      <td 
-        *ngFor="let header of dataKeys" 
-        [style.backgroundColor]="getCellColor(row.userId, header) || (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')"
-      >
-        {{ row[header] }}
-      </td>
-    </tr>
+    @for (row of data; track row; let i = $index) {
+      <tr
+        (click)="onRowClick(row)"
+        [style.backgroundColor]="getRowColor(row.userId)"
+        >
+        @for (header of dataKeys; track header) {
+          <td
+            [style.backgroundColor]="getCellColor(row.userId, header) || (i % 2 === 0 ? 'var(--block-child-background)' : 'var(--block-background)')"
+            >
+            {{ row[header] }}
+          </td>
+        }
+      </tr>
+    }
   </tbody>
 </table>

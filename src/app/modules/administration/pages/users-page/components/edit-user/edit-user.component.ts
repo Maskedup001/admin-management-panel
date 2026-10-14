@@ -4,9 +4,10 @@ import { UserRegister } from '../../../../../../domains/users/models/user.model'
 import { UserService } from '../../../../../../domains/users/services/user.service';  // Добавлен импорт UserService
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+    selector: 'app-edit-user',
+    templateUrl: './edit-user.component.html',
+    styleUrls: ['./edit-user.component.css'],
+    standalone: false
 })
 export class EditUserComponent implements OnInit, OnChanges {
   @Input() selectedUser: UserRegister | null = null; // при клике на юзера в таблице получаем его
