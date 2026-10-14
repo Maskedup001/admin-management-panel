@@ -13,7 +13,7 @@
 			<input type='text' placeholder='Пароль' formControlName='userPassword'
 				[ngClass]="{ invalid: getFieldErrors('userPassword') }" />
 			<div *ngIf="getFieldErrors('userPassword')">
-				<small>Пароль минимум 4 символа, должен содержать !@#$%^&*</small>
+				<small>Пароль минимум 4 символа, должен содержать !&#64;#$%^&*</small>
 			</div>
 		</div>
 		<div class="field-container">

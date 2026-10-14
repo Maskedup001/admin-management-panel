@@ -64,10 +64,10 @@
 					},
           "configurations": {
             "production": {
-              "browserTarget": "cnt-group-praktika:build:production"
+              "buildTarget": "cnt-group-praktika:build:production"
             },
             "development": {
-              "browserTarget": "cnt-group-praktika:build:development"
+              "buildTarget": "cnt-group-praktika:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cnt-group-praktika:build"
+            "buildTarget": "cnt-group-praktika:build"
           }
         },
         "test": {
